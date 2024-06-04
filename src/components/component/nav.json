@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_component_navs",
+  "info": {
+    "displayName": "Nav",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "component.cta-link"
+    }
+  }
+}

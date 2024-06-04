@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_composant_repeatable_contents",
+  "info": {
+    "displayName": "Repeatable Contents",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "contents": {
+      "type": "component",
+      "repeatable": true,
+      "component": "subcomponent.contents"
+    },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "component.cta-link"
+    },
+    "media": {
+      "type": "component",
+      "repeatable": true,
+      "component": "component.file-path"
+    }
+  }
+}

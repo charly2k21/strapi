@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_component_links",
+  "info": {
+    "displayName": "Links",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "component.cta-link"
+    }
+  }
+}

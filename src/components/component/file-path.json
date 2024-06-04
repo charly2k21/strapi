@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_component_file_paths",
+  "info": {
+    "displayName": "filePath",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "path": {
+      "type": "string"
+    },
+    "alt": {
+      "type": "string",
+      "required": false
+    },
+    "height": {
+      "type": "string"
+    },
+    "width": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_component_footers",
+  "info": {
+    "displayName": "footer",
+    "icon": "archive",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "logo": {
+      "type": "string"
+    },
+    "copyright": {
+      "type": "string",
+      "default": "© Clinique Laboratories. Tous Droits Réservés."
+    },
+    "navigations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::navigation.navigation"
+    }
+  }
+}

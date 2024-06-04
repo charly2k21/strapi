@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_component_mobiles",
+  "info": {
+    "displayName": "Mobile"
+  },
+  "options": {},
+  "attributes": {
+    "navigation": {
+      "type": "component",
+      "repeatable": true,
+      "component": "component.cta-link"
+    },
+    "social": {
+      "type": "component",
+      "repeatable": true,
+      "component": "component.cta-link"
+    }
+  }
+}
