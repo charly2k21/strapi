@@ -38,10 +38,6 @@
       "type": "component",
       "repeatable": false,
       "component": "component.mobile"
-    },
-    "GoogleCheckCode": {
-      "type": "string",
-      "default": "EawnxBFnhz8cgs7UI25li3afArbYDz-0j-Wp-lWCvVQ"
     }
   }
 }

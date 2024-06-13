@@ -1,0 +1,38 @@
+{
+  "kind": "singleType",
+  "collectionName": "email_configs",
+  "info": {
+    "singularName": "email-config",
+    "pluralName": "email-configs",
+    "displayName": "EmailContactConfig",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Confirm your email address",
+      "required": true
+    },
+    "message": {
+      "type": "text",
+      "default": "Your confirmation code is below - enter it in your open browser window and we'll help you get signed in.",
+      "required": false
+    },
+    "legend": {
+      "type": "text",
+      "default": "If you didn't request this email, there 's nothing to worry about, you can safely ignore it.",
+      "required": false
+    },
+    "subject": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

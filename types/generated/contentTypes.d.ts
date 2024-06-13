@@ -788,6 +788,186 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
+export interface ApiBlogConfigBlogConfig extends Schema.SingleType {
+  collectionName: 'blog_configs';
+  info: {
+    singularName: 'blog-config';
+    pluralName: 'blog-configs';
+    displayName: 'Blog Config';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    topPostTitle: Attribute.String;
+    topPostList: Attribute.Relation<
+      'api::blog-config.blog-config',
+      'oneToMany',
+      'api::post.post'
+    >;
+    categories: Attribute.Relation<
+      'api::blog-config.blog-config',
+      'oneToMany',
+      'api::categorie.categorie'
+    >;
+    label: Attribute.String & Attribute.DefaultTo<'Blog'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::blog-config.blog-config',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::blog-config.blog-config',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCategorieCategorie extends Schema.CollectionType {
+  collectionName: 'categories';
+  info: {
+    singularName: 'categorie';
+    pluralName: 'categories';
+    displayName: 'categorie';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    slug: Attribute.UID &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    label: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    description: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::categorie.categorie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::categorie.categorie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::categorie.categorie',
+      'oneToMany',
+      'api::categorie.categorie'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiEmailConfigEmailConfig extends Schema.SingleType {
+  collectionName: 'email_configs';
+  info: {
+    singularName: 'email-config';
+    pluralName: 'email-configs';
+    displayName: 'EmailContactConfig';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'Confirm your email address'>;
+    message: Attribute.Text &
+      Attribute.DefaultTo<"Your confirmation code is below - enter it in your open browser window and we'll help you get signed in.">;
+    legend: Attribute.Text &
+      Attribute.DefaultTo<"If you didn't request this email, there 's nothing to worry about, you can safely ignore it.">;
+    subject: Attribute.String & Attribute.Required;
+    content: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::email-config.email-config',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::email-config.email-config',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiEmailConfirmationConfigEmailConfirmationConfig
+  extends Schema.SingleType {
+  collectionName: 'email_confirmation_configs';
+  info: {
+    singularName: 'email-confirmation-config';
+    pluralName: 'email-confirmation-configs';
+    displayName: 'EmailConfirmationConfig';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.DefaultTo<'Confirm your email address'>;
+    message: Attribute.Text &
+      Attribute.DefaultTo<"Your confirmation code is below - enter it in your open browser window and we\\'ll help you get signed in.">;
+    legend: Attribute.Text &
+      Attribute.DefaultTo<"If you didn't request this email, there's nothing to worry about, you can safely ignore it.">;
+    subject: Attribute.String & Attribute.Required;
+    content: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::email-confirmation-config.email-confirmation-config',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::email-confirmation-config.email-confirmation-config',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiFaqFaq extends Schema.CollectionType {
   collectionName: 'faqs';
   info: {
@@ -831,8 +1011,6 @@ export interface ApiGlobalConfigGlobalConfig extends Schema.SingleType {
     SlideServices: Attribute.Component<'component.page-card', true>;
     ctaMarketing: Attribute.Component<'component.cta-link'>;
     mobile: Attribute.Component<'component.mobile'>;
-    GoogleCheckCode: Attribute.String &
-      Attribute.DefaultTo<'EawnxBFnhz8cgs7UI25li3afArbYDz-0j-Wp-lWCvVQ'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -912,6 +1090,83 @@ export interface ApiPagePage extends Schema.CollectionType {
   };
 }
 
+export interface ApiPostPost extends Schema.CollectionType {
+  collectionName: 'posts';
+  info: {
+    singularName: 'post';
+    pluralName: 'posts';
+    displayName: 'Post';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    slug: Attribute.UID &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    subtitle: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    content: Attribute.Blocks &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    thumbnail: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    seo: Attribute.Component<'shared.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    categories: Attribute.Relation<
+      'api::post.post',
+      'oneToMany',
+      'api::categorie.categorie'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::post.post',
+      'oneToMany',
+      'api::post.post'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -930,10 +1185,15 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
+      'api::blog-config.blog-config': ApiBlogConfigBlogConfig;
+      'api::categorie.categorie': ApiCategorieCategorie;
+      'api::email-config.email-config': ApiEmailConfigEmailConfig;
+      'api::email-confirmation-config.email-confirmation-config': ApiEmailConfirmationConfigEmailConfirmationConfig;
       'api::faq.faq': ApiFaqFaq;
       'api::global-config.global-config': ApiGlobalConfigGlobalConfig;
       'api::navigation.navigation': ApiNavigationNavigation;
       'api::page.page': ApiPagePage;
+      'api::post.post': ApiPostPost;
     }
   }
 }

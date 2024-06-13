@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "blog_configs",
+  "info": {
+    "singularName": "blog-config",
+    "pluralName": "blog-configs",
+    "displayName": "Blog Config",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "topPostTitle": {
+      "type": "string"
+    },
+    "topPostList": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::post.post"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::categorie.categorie"
+    },
+    "label": {
+      "type": "string",
+      "default": "Blog"
+    }
+  }
+}
